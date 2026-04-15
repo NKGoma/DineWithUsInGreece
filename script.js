@@ -360,5 +360,4 @@ function buildGame() {
   });
 }
 
-// Init
-buildGame();
+// Game init removed — host plays songs live
