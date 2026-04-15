@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Come Dine With Us — Greece · Munich, Version I</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Side navigation dots -->
+  <nav class="sidenav" id="sidenav" aria-label="Page navigation">
+    <button class="sidenav__dot active" data-target="page-1" title="The Invitation"></button>
+    <button class="sidenav__dot" data-target="page-2" title="The First Taste"></button>
+    <button class="sidenav__dot" data-target="page-3" title="The Table Settles"></button>
+    <button class="sidenav__dot" data-target="page-4" title="The Sweet Turn"></button>
+    <button class="sidenav__dot" data-target="page-5" title="What We Sip"></button>
+    <button class="sidenav__dot" data-target="page-6" title="The Game"></button>
+    <button class="sidenav__dot" data-target="page-7" title="The Last Page"></button>
+  </nav>
+
+  <!-- Music widget -->
+  <div class="music-widget" id="musicWidget">
+    <button class="music-widget__btn" id="musicBtn" aria-label="Toggle background music">
+      <svg class="icon-music" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M9 18V5l12-2v13M9 18c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-2c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/>
+      </svg>
+    </button>
+    <div class="music-widget__info">
+      <span class="music-widget__title">Αθήνα Μου</span>
+      <span class="music-widget__status" id="musicStatus">tap to play</span>
+    </div>
+    <div id="yt-player"></div>
+  </div>
+
+  <!-- ============================================================
+       PAGE I — THE INVITATION
+  ============================================================ -->
+  <section class="page page--dark" id="page-1">
+    <div class="sky-bg">
+      <div class="stars-layer" id="starsLayer1"></div>
+    </div>
+
+    <div class="page__inner page__inner--center">
+      <p class="eyebrow">Come Dine With Us &mdash; Munich, Version I</p>
+      <p class="evening-label">Sunday Evening</p>
+      <div class="ornament">&#9671;</div>
+      <h1 class="page-heading page-heading--light">Page I &mdash; The Invitation</h1>
+
+      <div class="poem">
+        <p>There are places we visit,<br />and places we imagine ourselves into.</p>
+        <p>Tonight, it is Greece.</p>
+        <p>White and blue, sunlight on stone,<br />
+        the quiet hum of a late summer evening<br />
+        that stretches just a little longer than expected.</p>
+        <p>This is not just dinner.<br />It is a table set somewhere else.</p>
+        <p>Come dressed for warm air and slow time.<br />
+        As if, just for tonight, we never had to leave.</p>
+      </div>
+
+      <p class="hosts-credit">Alisa &amp; Noran &middot; First Stop: Greece</p>
+    </div>
+
+    <!-- Santorini skyline silhouette -->
+    <div class="skyline">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Far background buildings -->
+        <rect x="850" y="180" width="160" height="80" fill="rgba(255,255,255,0.35)" rx="2"/>
+        <rect x="870" y="155" width="80" height="105" fill="rgba(255,255,255,0.4)" rx="2"/>
+        <ellipse cx="910" cy="155" rx="40" ry="18" fill="rgba(43,108,176,0.55)"/>
+        <rect x="870" y="155" width="80" height="12" fill="rgba(43,108,176,0.55)"/>
+        <rect x="1050" y="190" width="120" height="70" fill="rgba(255,255,255,0.3)" rx="2"/>
+
+        <!-- Left cluster -->
+        <rect x="0" y="155" width="200" height="105" fill="rgba(255,255,255,0.75)" rx="2"/>
+        <rect x="50" y="125" width="110" height="135" fill="rgba(255,255,255,0.88)" rx="2"/>
+        <!-- Dome -->
+        <ellipse cx="105" cy="125" rx="55" ry="24" fill="rgba(43,108,176,0.85)"/>
+        <rect x="50" y="125" width="110" height="16" fill="rgba(43,108,176,0.85)"/>
+        <!-- Bell tower -->
+        <rect x="170" y="100" width="30" height="120" fill="rgba(255,255,255,0.8)" rx="1"/>
+        <rect x="163" y="95" width="44" height="10" fill="rgba(255,255,255,0.9)" rx="1"/>
+        <!-- Windows (warm light) -->
+        <rect x="72" y="158" width="18" height="18" fill="rgba(255,220,120,0.45)" rx="2"/>
+        <rect x="112" y="158" width="18" height="18" fill="rgba(255,220,120,0.35)" rx="2"/>
+        <rect x="20" y="175" width="16" height="16" fill="rgba(255,220,120,0.3)" rx="2"/>
+
+        <!-- Second cluster (slightly right) -->
+        <rect x="230" y="165" width="90" height="95" fill="rgba(255,255,255,0.7)" rx="2"/>
+        <rect x="280" y="140" width="70" height="120" fill="rgba(255,255,255,0.82)" rx="2"/>
+        <ellipse cx="315" cy="140" rx="35" ry="16" fill="rgba(43,108,176,0.8)"/>
+        <rect x="280" y="140" width="70" height="11" fill="rgba(43,108,176,0.8)"/>
+        <rect x="238" y="188" width="14" height="14" fill="rgba(255,220,120,0.4)" rx="2"/>
+
+        <!-- Steps centre-left -->
+        <rect x="390" y="220" width="180" height="8" fill="rgba(255,255,255,0.5)" rx="1"/>
+        <rect x="400" y="212" width="160" height="8" fill="rgba(255,255,255,0.4)" rx="1"/>
+        <rect x="412" y="204" width="136" height="8" fill="rgba(255,255,255,0.3)" rx="1"/>
+        <rect x="424" y="196" width="112" height="8" fill="rgba(255,255,255,0.2)" rx="1"/>
+
+        <!-- Centre church / feature building -->
+        <rect x="580" y="150" width="140" height="110" fill="rgba(255,255,255,0.78)" rx="2"/>
+        <rect x="615" y="115" width="70" height="145" fill="rgba(255,255,255,0.9)" rx="2"/>
+        <ellipse cx="650" cy="115" rx="46" ry="20" fill="rgba(43,108,176,0.88)"/>
+        <rect x="615" y="115" width="70" height="14" fill="rgba(43,108,176,0.88)"/>
+        <!-- Cross on top -->
+        <rect x="647" y="88" width="6" height="28" fill="rgba(255,255,255,0.85)"/>
+        <rect x="638" y="96" width="24" height="5" fill="rgba(255,255,255,0.85)"/>
+        <!-- Windows -->
+        <rect x="630" y="148" width="16" height="16" fill="rgba(255,220,120,0.5)" rx="2"/>
+        <rect x="658" y="148" width="16" height="16" fill="rgba(255,220,120,0.45)" rx="2"/>
+        <rect x="592" y="170" width="14" height="14" fill="rgba(255,220,120,0.35)" rx="2"/>
+
+        <!-- Right cluster -->
+        <rect x="1100" y="155" width="180" height="105" fill="rgba(255,255,255,0.72)" rx="2"/>
+        <rect x="1150" y="120" width="105" height="140" fill="rgba(255,255,255,0.86)" rx="2"/>
+        <ellipse cx="1203" cy="120" rx="53" ry="22" fill="rgba(43,108,176,0.82)"/>
+        <rect x="1150" y="120" width="105" height="14" fill="rgba(43,108,176,0.82)"/>
+        <rect x="1160" y="158" width="16" height="16" fill="rgba(255,220,120,0.45)" rx="2"/>
+        <rect x="1200" y="158" width="16" height="16" fill="rgba(255,220,120,0.4)" rx="2"/>
+
+        <!-- Far right -->
+        <rect x="1320" y="170" width="120" height="90" fill="rgba(255,255,255,0.6)" rx="2"/>
+        <rect x="1340" y="150" width="70" height="110" fill="rgba(255,255,255,0.72)" rx="2"/>
+        <ellipse cx="1375" cy="150" rx="35" ry="16" fill="rgba(43,108,176,0.7)"/>
+        <rect x="1340" y="150" width="70" height="11" fill="rgba(43,108,176,0.7)"/>
+
+        <!-- Sea shimmer -->
+        <rect x="0" y="245" width="1440" height="15" fill="rgba(255,255,255,0.06)"/>
+        <rect x="0" y="252" width="1440" height="8" fill="rgba(255,255,255,0.04)"/>
+      </svg>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>scroll</span>
+      <div class="scroll-arrow">&#8595;</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE II — THE FIRST TASTE (APPETIZERS)
+  ============================================================ -->
+  <section class="page page--light" id="page-2">
+    <div class="page__inner">
+      <header class="section-header">
+        <span class="roman">II</span>
+        <h2 class="page-heading">The First Taste</h2>
+        <p class="section-lead">It begins, as all good evenings do, slowly.</p>
+      </header>
+
+      <!-- Dish 1: Horiatiki -->
+      <article class="dish">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#935;&#969;&#961;&#953;&#940;&#964;&#953;&#954;&#951; &#963;&#945;&#955;&#940;&#964;&#945;</h3>
+          <p class="dish__roman">Hori&#225;tiki sal&#225;ta</p>
+          <p class="dish__english">Greek Village Salad</p>
+        </div>
+        <div class="dish__body">
+          <p>It arrives without ceremony &mdash; sun-ripened tomatoes, crisp cucumber, sharp olives, and a thick slice of feta resting on top, untouched.</p>
+          <p class="dish__note">Juicy, salty, fresh. Each bite tastes like something real, something uncomplicated &mdash; like food that belongs outdoors, under an open sky.</p>
+        </div>
+      </article>
+
+      <div class="dish-sep" aria-hidden="true">&#9672;</div>
+
+      <!-- Dish 2: Feta with honey -->
+      <article class="dish">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#934;&#941;&#964;&#945; &#956;&#949; &#956;&#941;&#955;&#953; &amp; &#952;&#965;&#956;&#940;&#961;&#953;</h3>
+          <p class="dish__roman">F&#233;ta me m&#233;li &amp; thym&#225;ri</p>
+          <p class="dish__english">Baked Feta with Honey &amp; Thyme</p>
+        </div>
+        <div class="dish__body">
+          <p>Then, something softer. The feta warmed just enough to give in, drizzled with golden honey that pools at the edges, finished with thyme that lingers gently in the background.</p>
+          <p class="dish__note">It melts slightly as you cut into it &mdash; sweet, salty, delicate.</p>
+        </div>
+      </article>
+
+      <div class="dish-sep" aria-hidden="true">&#9672;</div>
+
+      <!-- Dish 3: Halloumi -->
+      <article class="dish">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#935;&#945;&#955;&#959;&#973;&#956;&#953; &#956;&#949; &#961;&#972;&#948;&#953;</h3>
+          <p class="dish__roman">Halo&#250;mi me r&#243;di</p>
+          <p class="dish__english">Grilled Halloumi with Pomegranate Molasses</p>
+        </div>
+        <div class="dish__body">
+          <p>And then, a contrast. Halloumi, grilled until golden, its edges crisp, its center still soft. Over it, pomegranate molasses &mdash; deep, tangy, almost syrup-like.</p>
+          <p class="dish__note">The bite is rich, bright, unexpected. The kind of flavor that stays with you for a moment longer than it should.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE III — THE TABLE SETTLES (MAINS)
+  ============================================================ -->
+  <section class="page page--warm" id="page-3">
+    <div class="page__inner">
+      <header class="section-header">
+        <span class="roman">III</span>
+        <h2 class="page-heading">The Table Settles</h2>
+        <p class="section-lead">The main dish does not rush in. It arrives when the table is ready.</p>
+      </header>
+
+      <!-- Moussaka -->
+      <article class="dish dish--feature">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#924;&#959;&#965;&#963;&#945;&#954;&#940;&#962;</h3>
+          <p class="dish__roman">Mousakás</p>
+          <p class="dish__english">Moussaka</p>
+        </div>
+        <div class="dish__body">
+          <p>Layers of tender eggplant, slow-cooked meat, spiced gently, then covered in a thick, creamy b&#233;chamel. Baked until the top turns golden, almost caramelized.</p>
+          <p class="dish__note">It is warm, rich, and deeply comforting &mdash; each layer soft, each bite balanced between savory and smooth. A dish that feels like it has taken its time, and asks you to do the same.</p>
+          <blockquote class="footnote">
+            <span class="footnote__mark">&#10022;</span>
+            <div class="footnote__text">
+              <p>The name arrives from Arabic &mdash; <em>&#1605;&#1587;&#1602;&#1593;&#1577; (musaqa&lsquo;a)</em>, meaning &ldquo;the chilled one.&rdquo; The dish exists across Egypt and the Levant in an older form: no b&#233;chamel, no oven, often served at room temperature. In Egypt it is layered with fried eggplant and spiced tomato sauce &mdash; simpler, perhaps, but no less considered.</p>
+              <p>The Greek version was reimagined in the 1920s by a chef trained in France, who added the creamy b&#233;chamel crown. Two cultures, one dish, different stories. Both worth the table.</p>
+            </div>
+          </blockquote>
+        </div>
+      </article>
+
+      <div class="dish-sep" aria-hidden="true">&#9672;</div>
+
+      <!-- Tzatziki -->
+      <article class="dish">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#932;&#950;&#945;&#964;&#950;&#943;&#954;&#953;</h3>
+          <p class="dish__roman">Tzatz&#237;ki</p>
+          <p class="dish__english">Cucumber Yogurt Dip</p>
+        </div>
+        <div class="dish__body">
+          <p>Cool yogurt, finely cut cucumber, garlic, a hint of dill and mint. Light, fresh, and sharp enough to cut through the richness.</p>
+          <p class="dish__note">A quiet contrast that makes everything else taste clearer.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE IV — THE SWEET TURN (DESSERT)
+  ============================================================ -->
+  <section class="page page--golden" id="page-4">
+    <div class="page__inner">
+      <header class="section-header">
+        <span class="roman">IV</span>
+        <h2 class="page-heading">The Sweet Turn</h2>
+        <p class="section-lead">Somewhere along the evening, things become softer.</p>
+      </header>
+
+      <article class="dish dish--feature">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#928;&#959;&#961;&#964;&#959;&#954;&#945;&#955;&#972;&#960;&#953;&#964;&#945;</h3>
+          <p class="dish__roman">Portokal&#243;pita</p>
+          <p class="dish__english">Greek Orange Cake</p>
+        </div>
+        <div class="dish__body">
+          <p>A delicate orange cake, soaked slowly in syrup until it becomes almost impossibly moist. Bright citrus rises first, followed by warmth, sweetness, and a gentle depth that settles in.</p>
+          <p class="dish__note">Light, but indulgent. Sweet, but never heavy. The kind of dessert that does not end the evening &mdash; it extends it.</p>
+          <blockquote class="footnote footnote--gold">
+            <span class="footnote__mark">&#10022;</span>
+            <div class="footnote__text">
+              <p>A small secret inside the name: <em>portok&#225;li</em> (&#960;&#959;&#961;&#964;&#959;&#954;&#940;&#955;&#953;) is Greek for orange. In Arabic, it is <em>burtu&#7731;&#257;l</em> (&#1576;&#1585;&#1578;&#1602;&#1575;&#1604;). In Turkish, <em>portakal</em>. In Persian, <em>porteg&#257;l</em>. All the same word, carried across the Mediterranean from Portugal, where Europeans first encountered this fruit.</p>
+              <p class="footnote__accent">One fruit. One word. A whole sea of languages.</p>
+            </div>
+          </blockquote>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE V — WHAT WE SIP (DRINK)
+  ============================================================ -->
+  <section class="page page--blue" id="page-5">
+    <div class="page__inner page__inner--center">
+      <header class="section-header section-header--center">
+        <span class="roman">V</span>
+        <h2 class="page-heading">What We Sip</h2>
+        <p class="section-lead">Glasses catch the light.</p>
+      </header>
+
+      <div class="drink-card">
+        <div class="dish__title-block">
+          <h3 class="dish__greek">&#924;&#945;&#963;&#964;&#943;&#967;&#945; &#955;&#949;&#956;&#972;&#957;&#953;</h3>
+          <p class="dish__roman">Mast&#237;cha lem&#243;ni</p>
+          <p class="dish__english">Mastiha Lemon Twist</p>
+        </div>
+
+        <div class="drink-components">
+          <div class="drink-component">
+            <span class="drink-component__name">Fresh lemon</span>
+            <span class="drink-component__desc">sharp and clean</span>
+          </div>
+          <span class="drink-plus" aria-hidden="true">+</span>
+          <div class="drink-component">
+            <span class="drink-component__name">Mastiha</span>
+            <span class="drink-component__desc">subtle, almost pine-like sweetness</span>
+          </div>
+          <span class="drink-plus" aria-hidden="true">+</span>
+          <div class="drink-component">
+            <span class="drink-component__name">Mastiha cream</span>
+            <span class="drink-component__desc">smooth, fragrant &mdash; spooned on top</span>
+          </div>
+        </div>
+
+        <p class="drink-story">It is refreshing, slightly unusual, and somehow exactly right for the moment.</p>
+
+        <blockquote class="footnote">
+          <span class="footnote__mark">&#10022;</span>
+          <div class="footnote__text">
+            <p>Mastiha is a resin that comes only from the mastic trees of Chios &mdash; a Greek island that holds the world&rsquo;s only supply. For centuries it was traded across the Mediterranean, known to Greeks and Arabs alike as medicine, breath freshener, perfume. The ancient Egyptians used it in embalming. The Ottoman court chewed it. Tonight, it arrives in a glass.</p>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE VI — THE GAME
+  ============================================================ -->
+  <section class="page page--game" id="page-6">
+    <div class="page__inner">
+      <header class="section-header">
+        <span class="roman roman--light">VI</span>
+        <h2 class="page-heading page-heading--light">The Game</h2>
+        <p class="section-lead section-lead--light">&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#972; &#942; &#913;&#961;&#945;&#946;&#953;&#954;&#972; &mdash; Greek or Arabic?</p>
+        <p class="game-intro">Later, when the plates are empty and no one is in a hurry. A song plays. You listen more closely than usual. You guess &mdash; and sometimes you are right.</p>
+      </header>
+
+      <div class="game-wrapper">
+        <div class="game-score-bar">
+          <span class="game-score-label">Score</span>
+          <span class="game-score-value"><span id="scoreVal">0</span> / <span id="totalVal">5</span></span>
+        </div>
+
+        <div class="game-grid" id="gameGrid">
+          <!-- Populated by script.js -->
+        </div>
+
+        <div class="game-end" id="gameEnd" hidden>
+          <p class="game-end__message" id="gameEndMsg"></p>
+          <button class="btn-outline" id="gameRestartBtn">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PAGE VII — THE LAST PAGE
+  ============================================================ -->
+  <section class="page page--dark page--closing" id="page-7">
+    <div class="sky-bg sky-bg--night">
+      <div class="stars-layer" id="starsLayer2"></div>
+    </div>
+
+    <div class="page__inner page__inner--center">
+      <span class="roman roman--light">VII</span>
+      <h2 class="page-heading page-heading--light">The Last Page</h2>
+      <div class="ornament ornament--faint">&#9671;</div>
+
+      <div class="poem poem--closing">
+        <p>Nothing ends suddenly.</p>
+        <p>Just slower conversations,<br />softer laughter,<br />and the feeling of having been somewhere else for a while.</p>
+        <p>A table,<br />a few dishes,<br />a shared evening &mdash;</p>
+        <p>and somehow,<br />a whole place created in between.</p>
+      </div>
+
+      <div class="ornament ornament--faint">&#9671;</div>
+      <p class="closing-credit">Alisa &amp; Noran &middot; Munich &middot; Version I</p>
+    </div>
+
+    <!-- Night skyline with lit windows -->
+    <div class="skyline skyline--night">
+      <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="155" width="200" height="105" fill="rgba(255,255,255,0.28)" rx="2"/>
+        <rect x="50" y="125" width="110" height="135" fill="rgba(255,255,255,0.38)" rx="2"/>
+        <ellipse cx="105" cy="125" rx="55" ry="24" fill="rgba(43,108,176,0.5)"/>
+        <rect x="50" y="125" width="110" height="16" fill="rgba(43,108,176,0.5)"/>
+        <rect x="170" y="100" width="30" height="120" fill="rgba(255,255,255,0.32)" rx="1"/>
+        <rect x="163" y="95" width="44" height="10" fill="rgba(255,255,255,0.38)" rx="1"/>
+        <!-- Warm window lights -->
+        <rect x="72" y="158" width="16" height="16" fill="rgba(255,215,100,0.65)" rx="2"/>
+        <rect x="112" y="158" width="16" height="16" fill="rgba(255,215,100,0.5)" rx="2"/>
+        <rect x="20" y="175" width="14" height="14" fill="rgba(255,215,100,0.45)" rx="2"/>
+        <rect x="72" y="190" width="16" height="16" fill="rgba(255,215,100,0.4)" rx="2"/>
+
+        <rect x="230" y="165" width="90" height="95" fill="rgba(255,255,255,0.26)" rx="2"/>
+        <rect x="280" y="140" width="70" height="120" fill="rgba(255,255,255,0.34)" rx="2"/>
+        <ellipse cx="315" cy="140" rx="35" ry="16" fill="rgba(43,108,176,0.48)"/>
+        <rect x="280" y="140" width="70" height="11" fill="rgba(43,108,176,0.48)"/>
+        <rect x="238" y="188" width="14" height="14" fill="rgba(255,215,100,0.55)" rx="2"/>
+        <rect x="292" y="165" width="14" height="14" fill="rgba(255,215,100,0.45)" rx="2"/>
+
+        <rect x="390" y="220" width="180" height="8" fill="rgba(255,255,255,0.22)" rx="1"/>
+        <rect x="400" y="212" width="160" height="8" fill="rgba(255,255,255,0.18)" rx="1"/>
+        <rect x="412" y="204" width="136" height="8" fill="rgba(255,255,255,0.14)" rx="1"/>
+
+        <rect x="580" y="150" width="140" height="110" fill="rgba(255,255,255,0.3)" rx="2"/>
+        <rect x="615" y="115" width="70" height="145" fill="rgba(255,255,255,0.38)" rx="2"/>
+        <ellipse cx="650" cy="115" rx="46" ry="20" fill="rgba(43,108,176,0.52)"/>
+        <rect x="615" y="115" width="70" height="14" fill="rgba(43,108,176,0.52)"/>
+        <rect x="647" y="88" width="5" height="26" fill="rgba(255,255,255,0.5)"/>
+        <rect x="638" y="96" width="22" height="4" fill="rgba(255,255,255,0.5)"/>
+        <rect x="630" y="148" width="15" height="15" fill="rgba(255,215,100,0.65)" rx="2"/>
+        <rect x="658" y="148" width="15" height="15" fill="rgba(255,215,100,0.55)" rx="2"/>
+        <rect x="592" y="170" width="13" height="13" fill="rgba(255,215,100,0.45)" rx="2"/>
+        <rect x="630" y="178" width="15" height="15" fill="rgba(255,215,100,0.4)" rx="2"/>
+
+        <rect x="1100" y="155" width="180" height="105" fill="rgba(255,255,255,0.28)" rx="2"/>
+        <rect x="1150" y="120" width="105" height="140" fill="rgba(255,255,255,0.36)" rx="2"/>
+        <ellipse cx="1203" cy="120" rx="53" ry="22" fill="rgba(43,108,176,0.5)"/>
+        <rect x="1150" y="120" width="105" height="14" fill="rgba(43,108,176,0.5)"/>
+        <rect x="1158" y="158" width="15" height="15" fill="rgba(255,215,100,0.6)" rx="2"/>
+        <rect x="1196" y="158" width="15" height="15" fill="rgba(255,215,100,0.5)" rx="2"/>
+        <rect x="1158" y="188" width="15" height="15" fill="rgba(255,215,100,0.4)" rx="2"/>
+
+        <rect x="1320" y="170" width="120" height="90" fill="rgba(255,255,255,0.24)" rx="2"/>
+        <rect x="1340" y="150" width="70" height="110" fill="rgba(255,255,255,0.3)" rx="2"/>
+        <ellipse cx="1375" cy="150" rx="35" ry="16" fill="rgba(43,108,176,0.44)"/>
+        <rect x="1340" y="150" width="70" height="11" fill="rgba(43,108,176,0.44)"/>
+        <rect x="1348" y="178" width="14" height="14" fill="rgba(255,215,100,0.55)" rx="2"/>
+
+        <!-- Sea reflection -->
+        <rect x="0" y="245" width="1440" height="15" fill="rgba(255,255,255,0.05)"/>
+      </svg>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

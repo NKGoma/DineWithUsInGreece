@@ -1,0 +1,757 @@
+/* ============================================================
+   Come Dine With Us — Greece
+   Blue & White Mediterranean Theme
+   ============================================================ */
+
+/* ---- Design tokens ---- */
+:root {
+  /* Blues */
+  --blue-deepest: #080f1c;
+  --blue-deep:    #0d1e35;
+  --blue-night:   #1a3150;
+  --blue-mid:     #2b6cb0;
+  --blue-bright:  #4a90d9;
+  --blue-pale:    #ebf4ff;
+
+  /* Neutrals */
+  --white:        #ffffff;
+  --cream:        #faf7f2;
+  --cream-warm:   #f5ede1;
+  --cream-gold:   #fef8ee;
+
+  /* Accents */
+  --gold:         #c8a46a;
+  --gold-light:   #e8d5a3;
+
+  /* Text */
+  --ink:          #1a2535;
+  --ink-mid:      #3d5068;
+  --ink-light:    rgba(255, 255, 255, 0.88);
+  --ink-muted:    rgba(255, 255, 255, 0.52);
+
+  /* Type */
+  --f-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --f-body:    'Lora', Georgia, 'Times New Roman', serif;
+
+  /* Spacing */
+  --section-pad-v: clamp(64px, 10vh, 120px);
+  --section-pad-h: clamp(24px, 6vw, 80px);
+  --content-max:   680px;
+}
+
+/* ---- Reset & base ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--f-body);
+  background: var(--blue-deep);
+  color: var(--ink);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ---- Pages ---- */
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page--dark    { background: linear-gradient(175deg, var(--blue-deepest) 0%, var(--blue-night) 55%, #1f4f82 100%); }
+.page--closing { background: linear-gradient(175deg, #040a12 0%, var(--blue-deepest) 40%, var(--blue-night) 100%); }
+.page--light   { background: var(--cream); }
+.page--warm    { background: var(--cream-warm); }
+.page--golden  { background: var(--cream-gold); }
+.page--blue    { background: linear-gradient(180deg, #eef6ff 0%, #e0eefa 100%); }
+.page--game    { background: linear-gradient(175deg, var(--blue-night) 0%, var(--blue-deepest) 100%); }
+
+/* ---- Sky / stars ---- */
+.sky-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sky-bg--night { background: radial-gradient(ellipse at 50% 0%, #0d2040 0%, transparent 70%); }
+
+.stars-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Skyline ---- */
+.skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.skyline svg { width: 100%; height: auto; display: block; }
+
+/* ---- Side navigation dots ---- */
+.sidenav {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.sidenav__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+.sidenav__dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.4);
+}
+
+.sidenav__dot.active {
+  background: white;
+  border-color: white;
+  transform: scale(1.25);
+}
+
+/* On light pages, swap to blue dots */
+body.on-light-page .sidenav__dot {
+  border-color: rgba(43, 108, 176, 0.4);
+}
+
+body.on-light-page .sidenav__dot:hover {
+  background: rgba(43, 108, 176, 0.25);
+}
+
+body.on-light-page .sidenav__dot.active {
+  background: var(--blue-mid);
+  border-color: var(--blue-mid);
+}
+
+/* ---- Music widget ---- */
+.music-widget {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#yt-player {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  left: -9999px;
+}
+
+.music-widget__btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(13, 30, 53, 0.65);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.music-widget__btn:hover {
+  background: rgba(43, 108, 176, 0.5);
+  border-color: rgba(43, 108, 176, 0.7);
+  color: white;
+}
+
+.music-widget__btn.is-playing {
+  background: rgba(43, 108, 176, 0.7);
+  border-color: rgba(43, 108, 176, 0.9);
+  color: white;
+  animation: music-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes music-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0.45); }
+  50%       { box-shadow: 0 0 0 9px rgba(43, 108, 176, 0); }
+}
+
+.icon-music { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.music-widget__btn.is-playing .icon-music { fill: currentColor; }
+
+.music-widget__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-widget__title {
+  font-family: var(--f-display);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+.music-widget__status {
+  font-family: var(--f-body);
+  font-size: 0.67rem;
+  color: rgba(255, 255, 255, 0.38);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* On light pages, adapt widget colours */
+body.on-light-page .music-widget__btn {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(43, 108, 176, 0.2);
+  color: var(--blue-mid);
+}
+
+body.on-light-page .music-widget__btn:hover {
+  background: var(--blue-pale);
+}
+
+body.on-light-page .music-widget__title  { color: var(--ink-mid); }
+body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
+
+/* ---- Page inner wrapper ---- */
+.page__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--content-max);
+  padding: var(--section-pad-v) var(--section-pad-h);
+  padding-bottom: calc(var(--section-pad-v) + 40px);
+}
+
+.page__inner--center { text-align: center; margin: 0 auto; }
+
+/* ---- Invitation eyebrow + labels ---- */
+.eyebrow {
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.evening-label {
+  font-family: var(--f-body);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  margin-bottom: 28px;
+  letter-spacing: 0.06em;
+}
+
+.ornament {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin: 14px 0;
+  letter-spacing: 0.4em;
+}
+
+.ornament--faint { color: rgba(255, 255, 255, 0.22); }
+
+/* ---- Page headings ---- */
+.page-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(1.65rem, 4.5vw, 2.8rem);
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.page-heading--light { color: var(--white); }
+
+/* ---- Poem (invitation + closing) ---- */
+.poem {
+  font-family: var(--f-body);
+  font-size: clamp(0.93rem, 2.5vw, 1.12rem);
+  line-height: 2;
+  color: var(--ink-light);
+  margin: 32px auto;
+  max-width: 520px;
+}
+
+.poem p { margin-bottom: 22px; }
+.poem p:last-child { margin-bottom: 0; }
+
+.poem--closing {
+  font-size: clamp(0.9rem, 2.3vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hosts-credit,
+.closing-credit {
+  font-family: var(--f-display);
+  font-size: 0.85rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-top: 8px;
+}
+
+/* ---- Scroll hint ---- */
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  right: 56px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  font-family: var(--f-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.scroll-arrow {
+  margin-top: 6px;
+  font-size: 1rem;
+  animation: bounce-down 2.2s ease-in-out infinite;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+/* ---- Section header ---- */
+.section-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(43, 108, 176, 0.14);
+}
+
+.section-header--center { text-align: center; }
+
+.roman {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 10px;
+}
+
+.roman--light { color: var(--gold); }
+
+.section-lead {
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-top: 12px;
+}
+
+.section-lead--light { color: rgba(255, 255, 255, 0.58); }
+
+/* ---- Dish ---- */
+.dish {
+  padding: 22px 0;
+}
+
+.dish--feature { /* slightly more breathing room — handled via footnote */ }
+
+.dish__title-block { margin-bottom: 14px; }
+
+.dish__greek {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.15rem, 3.2vw, 1.6rem);
+  color: var(--blue-night);
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.dish__roman {
+  font-family: var(--f-body);
+  font-size: 0.82rem;
+  color: var(--blue-mid);
+  letter-spacing: 0.09em;
+  margin-bottom: 3px;
+}
+
+.dish__english {
+  font-family: var(--f-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+.dish__body {
+  font-family: var(--f-body);
+  font-size: clamp(0.88rem, 2.2vw, 0.97rem);
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.dish__body p { margin-bottom: 10px; }
+.dish__body p:last-child { margin-bottom: 0; }
+
+.dish__note {
+  font-style: italic;
+  color: var(--ink-mid);
+}
+
+/* ---- Footnote callout ---- */
+.footnote {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: rgba(43, 108, 176, 0.06);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  font-style: normal;
+}
+
+.footnote--gold { background: rgba(200, 164, 106, 0.07); }
+
+.footnote__mark {
+  font-size: 0.75rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.footnote__text {
+  font-family: var(--f-body);
+  font-size: 0.845rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+.footnote__text p { margin-bottom: 8px; }
+.footnote__text p:last-child { margin-bottom: 0; }
+
+.footnote__accent {
+  font-family: var(--f-display);
+  font-style: italic;
+  color: var(--blue-mid);
+  font-size: 0.9rem;
+}
+
+/* ---- Dish separator ---- */
+.dish-sep {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--gold);
+  opacity: 0.5;
+  padding: 4px 0;
+}
+
+/* ---- Drink card ---- */
+.drink-card {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.drink-components {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 28px 0;
+}
+
+.drink-component {
+  width: 100%;
+  max-width: 340px;
+  padding: 12px 20px;
+  background: rgba(43, 108, 176, 0.07);
+  border: 1px solid rgba(43, 108, 176, 0.15);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.drink-component__name {
+  display: block;
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--blue-night);
+  margin-bottom: 3px;
+}
+
+.drink-component__desc {
+  display: block;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--ink-mid);
+}
+
+.drink-plus {
+  font-size: 1.1rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.drink-story {
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* ---- Game section ---- */
+.game-intro {
+  font-family: var(--f-body);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.48);
+  margin-top: 14px;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.game-wrapper { margin-top: 28px; }
+
+.game-score-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.game-score-label {
+  font-family: var(--f-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.game-score-value {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  color: var(--gold);
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* ---- Game card ---- */
+.game-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.35s, background 0.35s;
+}
+
+.game-card.state-correct {
+  border-color: rgba(110, 200, 145, 0.5);
+  background: rgba(110, 200, 145, 0.07);
+}
+
+.game-card.state-wrong {
+  border-color: rgba(215, 100, 100, 0.45);
+  background: rgba(215, 100, 100, 0.07);
+}
+
+.game-card__number {
+  font-family: var(--f-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.game-card__title {
+  font-family: var(--f-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.game-card__original {
+  font-family: var(--f-body);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: 10px;
+}
+
+.game-card__hint {
+  font-family: var(--f-body);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.game-card__btns {
+  display: flex;
+  gap: 8px;
+}
+
+.game-btn {
+  flex: 1;
+  padding: 8px 6px;
+  font-family: var(--f-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.65);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-btn--greek { border-color: rgba(74, 144, 217, 0.4); }
+.game-btn--arabic { border-color: rgba(200, 164, 106, 0.4); }
+
+.game-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.game-btn:disabled { cursor: default; opacity: 0.45; }
+
+/* ---- Game reveal ---- */
+.game-card__reveal {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+}
+
+.game-card__reveal.is-visible { display: block; }
+
+.reveal-label {
+  font-family: var(--f-display);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.reveal-label--greek  { color: #82c9f0; }
+.reveal-label--arabic { color: #e8c97a; }
+
+.reveal-fact {
+  font-family: var(--f-body);
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.48);
+  font-style: italic;
+}
+
+/* ---- Game end ---- */
+.game-end {
+  text-align: center;
+  padding: 32px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 24px;
+}
+
+.game-end__message {
+  font-family: var(--f-display);
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-style: italic;
+  color: white;
+  margin-bottom: 22px;
+  line-height: 1.45;
+}
+
+.btn-outline {
+  font-family: var(--f-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid var(--gold);
+  padding: 10px 30px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+
+/* ---- Closing page extras ---- */
+.page--closing .page__inner { padding-bottom: var(--section-pad-v); }
+
+/* ---- Twinkling star keyframe ---- */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 0.2; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .page__inner { padding: 56px 22px 80px; }
+  .sidenav     { right: 10px; gap: 10px; }
+  .music-widget { bottom: 20px; left: 18px; }
+  .scroll-hint  { right: 36px; bottom: 28px; }
+  .game-grid    { grid-template-columns: 1fr; }
+  .drink-components { gap: 4px; }
+}
+
+@media (max-height: 680px) {
+  .page__inner { padding-top: 40px; padding-bottom: 60px; }
+  .poem        { margin: 20px auto; }
+  .poem p      { margin-bottom: 14px; }
+}
+
+/* ---- Utility: hide skyline overlap area ---- */
+.page--dark  .page__inner,
+.page--game  .page__inner,
+.page--closing .page__inner {
+  padding-bottom: calc(var(--section-pad-v) + 80px);
+}
