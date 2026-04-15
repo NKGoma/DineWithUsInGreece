@@ -157,7 +157,7 @@ body.on-light-page .sidenav__dot.active {
   z-index: 200;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 #yt-player {
@@ -170,41 +170,49 @@ body.on-light-page .sidenav__dot.active {
 }
 
 .music-widget__btn {
-  width: 38px;
-  height: 38px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(13, 30, 53, 0.65);
-  color: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid rgba(255, 255, 255, 0.50);
+  background: rgba(13, 30, 53, 0.80);
+  color: rgba(255, 255, 255, 0.92);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: all 0.3s ease;
   flex-shrink: 0;
+  animation: music-idle 3.2s ease-in-out infinite;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.35);
 }
 
 .music-widget__btn:hover {
-  background: rgba(43, 108, 176, 0.5);
-  border-color: rgba(43, 108, 176, 0.7);
+  background: rgba(43, 108, 176, 0.6);
+  border-color: rgba(43, 108, 176, 0.85);
   color: white;
+  transform: scale(1.08);
 }
 
 .music-widget__btn.is-playing {
-  background: rgba(43, 108, 176, 0.7);
-  border-color: rgba(43, 108, 176, 0.9);
+  background: rgba(43, 108, 176, 0.75);
+  border-color: rgba(43, 108, 176, 0.95);
   color: white;
   animation: music-pulse 2.4s ease-in-out infinite;
 }
 
-@keyframes music-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0.45); }
-  50%       { box-shadow: 0 0 0 9px rgba(43, 108, 176, 0); }
+@keyframes music-idle {
+  0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 0 rgba(255,255,255,0.20); }
+  50%       { box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 8px rgba(255,255,255,0); }
 }
 
-.icon-music { display: block; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes music-pulse {
+  0%, 100% { box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 0 rgba(43, 108, 176, 0.55); }
+  50%       { box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 10px rgba(43, 108, 176, 0); }
+}
+
+.icon-music { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .music-widget__btn.is-playing .icon-music { fill: currentColor; }
 
 .music-widget__info {
@@ -214,27 +222,38 @@ body.on-light-page .sidenav__dot.active {
 
 .music-widget__title {
   font-family: var(--f-display);
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.90);
   line-height: 1.2;
   letter-spacing: 0.03em;
 }
 
 .music-widget__status {
   font-family: var(--f-body);
-  font-size: 0.67rem;
-  color: rgba(255, 255, 255, 0.38);
-  letter-spacing: 0.08em;
+  font-size: 0.70rem;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 /* On light pages, adapt widget colours */
 body.on-light-page .music-widget__btn {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(43, 108, 176, 0.2);
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(43, 108, 176, 0.35);
   color: var(--blue-mid);
+  animation: music-idle-light 3.2s ease-in-out infinite;
+  box-shadow: 0 2px 14px rgba(43,108,176,0.15);
+}
+
+body.on-light-page .music-widget__btn.is-playing {
+  animation: music-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes music-idle-light {
+  0%, 100% { box-shadow: 0 2px 14px rgba(43,108,176,0.15), 0 0 0 0 rgba(43,108,176,0.18); }
+  50%       { box-shadow: 0 2px 14px rgba(43,108,176,0.15), 0 0 0 7px rgba(43,108,176,0); }
 }
 
 body.on-light-page .music-widget__btn:hover {
@@ -242,7 +261,7 @@ body.on-light-page .music-widget__btn:hover {
 }
 
 body.on-light-page .music-widget__title  { color: var(--ink-mid); }
-body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
+body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 
 /* ---- Page inner wrapper ---- */
 .page__inner {
@@ -300,7 +319,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 /* ---- Poem (invitation + closing) ---- */
 .poem {
   font-family: var(--f-body);
-  font-size: clamp(0.93rem, 2.5vw, 1.12rem);
+  font-size: clamp(1.05rem, 2.6vw, 1.18rem);
   line-height: 2;
   color: var(--ink-light);
   margin: 32px auto;
@@ -311,7 +330,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 .poem p:last-child { margin-bottom: 0; }
 
 .poem--closing {
-  font-size: clamp(0.9rem, 2.3vw, 1.08rem);
+  font-size: clamp(1rem, 2.4vw, 1.12rem);
   color: rgba(255, 255, 255, 0.72);
 }
 
@@ -374,7 +393,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 
 .section-lead {
   font-family: var(--f-body);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   font-style: italic;
   color: var(--ink-mid);
   line-height: 1.65;
@@ -420,7 +439,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 
 .dish__body {
   font-family: var(--f-body);
-  font-size: clamp(0.88rem, 2.2vw, 0.97rem);
+  font-size: clamp(0.97rem, 2.3vw, 1.05rem);
   line-height: 1.85;
   color: var(--ink);
 }
@@ -457,7 +476,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 
 .footnote__text {
   font-family: var(--f-body);
-  font-size: 0.845rem;
+  font-size: 0.92rem;
   line-height: 1.75;
   color: var(--ink-mid);
 }
@@ -727,6 +746,21 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 /* ---- Closing page extras ---- */
 .page--closing .page__inner { padding-bottom: var(--section-pad-v); }
 
+/* ---- Credits above skyline ---- */
+.skyline-credits {
+  position: absolute;
+  bottom: 285px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .skyline-credits { bottom: 120px; }
+}
+
 /* ---- Twinkling star keyframe ---- */
 @keyframes twinkle {
   0%, 100% { opacity: 0.9; }
@@ -737,7 +771,8 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.5); }
 @media (max-width: 640px) {
   .page__inner { padding: 56px 22px 80px; }
   .sidenav     { right: 10px; gap: 10px; }
-  .music-widget { bottom: 20px; left: 18px; }
+  .music-widget { bottom: 20px; left: 16px; }
+  .music-widget__btn { width: 44px; height: 44px; }
   .scroll-hint  { right: 36px; bottom: 28px; }
   .game-grid    { grid-template-columns: 1fr; }
   .drink-components { gap: 4px; }
