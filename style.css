@@ -115,6 +115,8 @@ body {
   right: 0;
   line-height: 0;
   pointer-events: none;
+  max-height: 155px;
+  overflow: hidden;
 }
 
 .skyline svg { width: 100%; height: auto; display: block; }
@@ -775,7 +777,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 /* ---- Utility: skyline clearance ---- */
 .page--dark .page__inner,
 .page--closing .page__inner {
-  padding-bottom: calc(var(--section-pad-v) + 270px);
+  padding-bottom: calc(var(--section-pad-v) + 165px);
 }
 
 .page--game .page__inner {
