@@ -801,8 +801,13 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   .page__inner  { padding: 40px 20px 104px; }
   .pagenav      { gap: 8px; bottom: 14px; }
 
-  /* Music widget: top-right, icon only */
-  .music-widget { top: 12px; right: 14px; bottom: auto; left: auto; }
+  /* Music widget: top-right corner, icon only */
+  .music-widget {
+    top: 12px !important;
+    right: 14px !important;
+    bottom: auto !important;
+    left: auto !important;
+  }
   .music-widget__info { display: none; }
   .music-widget__btn  { width: 42px; height: 42px; }
 

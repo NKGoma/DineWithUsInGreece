@@ -90,7 +90,7 @@ setActiveDot('page-1');
 let ytPlayer       = null;
 let isPlaying      = false;
 let apiReady       = false;
-let playRequested  = false; // true if user clicked before API loaded
+let isMuted        = true;  // starts muted so autoplay is never blocked
 
 const musicBtn    = document.getElementById('musicBtn');
 const musicStatus = document.getElementById('musicStatus');
@@ -109,12 +109,13 @@ window.onYouTubeIframeAPIReady = function () {
   ytPlayer = new YT.Player('yt-player', {
     videoId: VIDEO_ID,
     playerVars: {
-      autoplay:        1,
-      loop:            1,
-      playlist:        VIDEO_ID,
-      controls:        0,
-      modestbranding:  1,
-      rel:             0,
+      autoplay:       1,
+      mute:           1,   // muted autoplay is never blocked by browsers
+      loop:           1,
+      playlist:       VIDEO_ID,
+      controls:       0,
+      modestbranding: 1,
+      rel:            0,
     },
     events: {
       onReady(e) {
@@ -135,31 +136,35 @@ window.onYouTubeIframeAPIReady = function () {
   });
 };
 
-// Mobile browsers block audio autoplay until a user gesture — play on first touch
-document.addEventListener('touchstart', function onFirstTouch() {
-  if (ytPlayer && !isPlaying) {
-    ytPlayer.playVideo();
-  }
-}, { once: true });
-
 function setMusicState(playing) {
   isPlaying = playing;
   musicBtn.classList.toggle('is-playing', playing);
-  musicStatus.textContent = playing ? 'playing' : 'paused';
+  if (playing && isMuted) {
+    musicStatus.textContent = 'tap to unmute';
+  } else {
+    musicStatus.textContent = playing ? 'playing' : 'paused';
+  }
 }
 
 musicBtn.addEventListener('click', () => {
   if (!apiReady || !ytPlayer) {
-    // API not ready yet; queue the request
-    playRequested = true;
-    musicStatus.textContent = 'loading…';
+    musicStatus.textContent = 'loading\u2026';
     return;
   }
+  // First tap: unmute (music is already playing silently)
+  if (isMuted) {
+    ytPlayer.unMute();
+    ytPlayer.setVolume(62);
+    isMuted = false;
+    musicStatus.textContent = 'playing';
+    if (!isPlaying) ytPlayer.playVideo();
+    return;
+  }
+  // Subsequent taps: pause / resume
   if (isPlaying) {
     ytPlayer.pauseVideo();
   } else {
     ytPlayer.playVideo();
-    playRequested = true;
   }
 });
 
