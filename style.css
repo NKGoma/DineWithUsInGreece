@@ -811,8 +811,8 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
    *  60–104px  : clearance to content
    */
 
-  /* Top 72px clears the music button; bottom 104px clears nav + arrow */
-  .page__inner  { padding: 72px 20px 104px; }
+  /* Top 60px clears the music button (bottom edge y=54) + 6px buffer; bottom 104px clears nav + arrow */
+  .page__inner  { padding: 60px 20px 104px; }
   .pagenav      { gap: 8px; bottom: max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); }
 
   /* Music widget: top-right corner, icon only */
@@ -858,7 +858,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 }
 
 @media (max-height: 680px) {
-  .page__inner { padding-top: 64px; padding-bottom: 104px; }
+  .page__inner { padding-top: 58px; padding-bottom: 104px; }
   .poem        { margin: 12px auto; }
   .poem p      { margin-bottom: 10px; }
 }
