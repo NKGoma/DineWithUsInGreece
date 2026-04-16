@@ -797,8 +797,23 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 
 /* ---- Responsive ---- */
 @media (max-width: 640px) {
-  /* Base inner padding — bottom clears the fixed music button */
-  .page__inner  { padding: 40px 20px 104px; }
+  /*
+   * Mobile layout zones (from top):
+   *   0–12px   : safe margin
+   *  12–54px   : music button (42px tall, top-right)
+   *  54–72px   : buffer below button
+   *  72px+     : page content starts (eyebrow, headings, poem…)
+   *
+   * Mobile layout zones (from bottom):
+   *   0–14px   : safe margin
+   *  14–24px   : nav dots (7px circles, bottom: 14px)
+   *  24–44px   : buffer above dots
+   *  44–60px   : swipe arrow
+   *  60–104px  : clearance to content
+   */
+
+  /* Top 72px clears the music button; bottom 104px clears nav + arrow */
+  .page__inner  { padding: 72px 20px 104px; }
   .pagenav      { gap: 8px; bottom: 14px; }
 
   /* Music widget: top-right corner, icon only */
@@ -811,8 +826,8 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   .music-widget__info { display: none; }
   .music-widget__btn  { width: 42px; height: 42px; }
 
-  /* Swipe arrow: show on page-1, no text label */
-  .scroll-hint        { display: flex; bottom: 24px; right: 16px; gap: 0; }
+  /* Swipe arrow: above nav dots (dots top ≈ bottom 21px, arrow at bottom 44px) */
+  .scroll-hint        { display: flex; bottom: 44px; right: 16px; gap: 0; }
   .scroll-hint > span { display: none; }
   .scroll-arrow       { font-size: 1rem; color: rgba(255,255,255,0.50); }
 
@@ -844,7 +859,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 }
 
 @media (max-height: 680px) {
-  .page__inner { padding-top: 28px; padding-bottom: 104px; }
+  .page__inner { padding-top: 64px; padding-bottom: 104px; }
   .poem        { margin: 12px auto; }
   .poem p      { margin-bottom: 10px; }
 }
