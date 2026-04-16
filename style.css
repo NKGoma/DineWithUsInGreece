@@ -776,8 +776,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   color: var(--blue-deep);
 }
 
-/* ---- Closing page extras ---- */
-.page--closing .page__inner { padding-bottom: var(--section-pad-v); }
+/* ---- Closing page: no extra rule needed, dark override handles it ---- */
 
 /* ---- Utility: skyline clearance ---- */
 .page--dark .page__inner,
@@ -814,7 +813,7 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 
   /* Top 72px clears the music button; bottom 104px clears nav + arrow */
   .page__inner  { padding: 72px 20px 104px; }
-  .pagenav      { gap: 8px; bottom: 14px; }
+  .pagenav      { gap: 8px; bottom: max(14px, calc(env(safe-area-inset-bottom, 0px) + 8px)); }
 
   /* Music widget: top-right corner, icon only */
   .music-widget {
@@ -834,9 +833,9 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   .game-grid         { grid-template-columns: 1fr; }
   .drink-components  { gap: 4px; }
 
-  /* Dark / closing pages need extra clearance for the skyline */
+  /* Dark / closing pages — 160px clears the skyline (~87px) AND the nav dots */
   .page--dark .page__inner,
-  .page--closing .page__inner { padding-bottom: 120px; }
+  .page--closing .page__inner { padding-bottom: 160px; }
 
   /* Scroll-down fade: bottom gradient hints at more content below */
   .page--light::after,
