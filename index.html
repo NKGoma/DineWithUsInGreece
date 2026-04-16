@@ -11,8 +11,8 @@
 </head>
 <body>
 
-  <!-- Side navigation dots -->
-  <nav class="sidenav" id="sidenav" aria-label="Page navigation">
+  <!-- Bottom navigation dots -->
+  <nav class="pagenav" id="sidenav" aria-label="Page navigation">
     <button class="sidenav__dot active" data-target="page-1" title="The Invitation"></button>
     <button class="sidenav__dot" data-target="page-2" title="The First Taste"></button>
     <button class="sidenav__dot" data-target="page-3" title="The Table Settles"></button>
@@ -35,6 +35,9 @@
     </div>
     <div id="yt-player"></div>
   </div>
+
+  <!-- Horizontal scroll wrapper -->
+  <div class="menu-scroll" id="menuScroll">
 
   <!-- ============================================================
        PAGE I — THE INVITATION
@@ -61,10 +64,6 @@
         As if, just for tonight, we never had to leave.</p>
       </div>
 
-    </div>
-
-    <!-- Credits lifted above skyline -->
-    <div class="skyline-credits">
       <p class="hosts-credit">Alisa &amp; Noran &middot; First Stop: Greece</p>
     </div>
 
@@ -72,96 +71,90 @@
     <div class="skyline">
       <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
-        <!-- Far background buildings (muted) -->
-        <rect x="822" y="190" width="148" height="70" fill="rgba(255,255,255,0.26)" rx="2"/>
-        <rect x="847" y="170" width="84" height="90" fill="rgba(255,255,255,0.30)" rx="2"/>
-        <!-- Background dome (arc path) -->
-        <path d="M 847 170 a 42 18 0 0 1 84 0 Z" fill="rgba(43,108,176,0.38)"/>
-        <rect x="1060" y="196" width="112" height="64" fill="rgba(255,255,255,0.22)" rx="2"/>
+        <!-- Distant background — faint outlines only -->
+        <rect x="822" y="192" width="146" height="68" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <rect x="848" y="172" width="82" height="88" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <path d="M 848 172 a 41 17 0 0 1 82 0 Z" fill="rgba(43,108,176,0.28)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        <rect x="1062" y="198" width="110" height="62" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
 
-        <!-- === LEFT CLUSTER — Church with bell tower === -->
-        <rect x="0" y="170" width="162" height="90" fill="rgba(255,255,255,0.68)" rx="2"/>
-        <rect x="38" y="148" width="114" height="112" fill="rgba(255,255,255,0.85)" rx="2"/>
-        <!-- Dome as proper arc hemisphere -->
-        <path d="M 38 148 a 57 26 0 0 1 114 0 Z" fill="rgba(43,108,176,0.87)"/>
-        <!-- Arched windows — rect + ellipse cap -->
-        <rect x="62" y="175" width="20" height="26" fill="rgba(255,220,120,0.40)" rx="3"/>
-        <ellipse cx="72" cy="175" rx="10" ry="6" fill="rgba(255,220,120,0.40)"/>
-        <rect x="104" y="175" width="20" height="26" fill="rgba(255,220,120,0.34)" rx="3"/>
-        <ellipse cx="114" cy="175" rx="10" ry="6" fill="rgba(255,220,120,0.34)"/>
-        <!-- Small side building -->
-        <rect x="4" y="188" width="38" height="72" fill="rgba(255,255,255,0.56)" rx="2"/>
-        <rect x="10" y="205" width="14" height="18" fill="rgba(255,220,120,0.28)" rx="2"/>
+        <!-- === LEFT CLUSTER — stroke line-art === -->
+        <rect x="0" y="172" width="160" height="88" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.52)" stroke-width="1.5"/>
+        <rect x="38" y="150" width="112" height="110" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.65)" stroke-width="1.5"/>
+        <!-- Blue dome (only filled element on buildings) -->
+        <path d="M 38 150 a 56 25 0 0 1 112 0 Z" fill="rgba(43,108,176,0.86)" stroke="rgba(255,255,255,0.48)" stroke-width="1.5"/>
+        <!-- Side building -->
+        <rect x="4" y="190" width="36" height="70" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.42)" stroke-width="1.5"/>
+        <rect x="10" y="207" width="14" height="18" fill="rgba(255,220,120,0.32)" rx="2"/>
         <!-- Bell tower -->
-        <rect x="170" y="110" width="34" height="130" fill="rgba(255,255,255,0.80)" rx="2"/>
-        <!-- Pediment -->
-        <polygon points="163,110 210,110 186.5,94" fill="rgba(255,255,255,0.72)"/>
+        <rect x="170" y="112" width="32" height="128" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+        <polygon points="164,112 208,112 186,96" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.48)" stroke-width="1.5" stroke-linejoin="round"/>
         <!-- Arched bell opening -->
-        <rect x="172" y="148" width="30" height="22" fill="rgba(43,108,176,0.48)" rx="15 15 2 2"/>
+        <path d="M 173 168 L 173 152 A 14 14 0 0 1 201 152 L 201 168 Z" fill="rgba(43,108,176,0.40)" stroke="rgba(255,255,255,0.28)" stroke-width="1"/>
+        <!-- Arched windows: warm glow fills only -->
+        <rect x="62" y="178" width="18" height="24" fill="rgba(255,220,120,0.42)" rx="2"/>
+        <ellipse cx="71" cy="178" rx="9" ry="5" fill="rgba(255,220,120,0.42)"/>
+        <rect x="104" y="178" width="18" height="24" fill="rgba(255,220,120,0.34)" rx="2"/>
+        <ellipse cx="113" cy="178" rx="9" ry="5" fill="rgba(255,220,120,0.34)"/>
         <!-- Terrace rail -->
-        <rect x="152" y="234" width="68" height="5" fill="rgba(255,255,255,0.48)" rx="1"/>
+        <line x1="150" y1="234" x2="222" y2="234" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/>
 
-        <!-- Cascading steps centre-left -->
-        <rect x="220" y="238" width="122" height="6" fill="rgba(255,255,255,0.40)" rx="1"/>
-        <rect x="232" y="231" width="98" height="6" fill="rgba(255,255,255,0.30)" rx="1"/>
-        <rect x="245" y="224" width="72" height="7" fill="rgba(255,255,255,0.20)" rx="1"/>
-        <rect x="258" y="217" width="46" height="7" fill="rgba(255,255,255,0.13)" rx="1"/>
+        <!-- Cascading steps — thin lines -->
+        <line x1="222" y1="242" x2="348" y2="242" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+        <line x1="234" y1="235" x2="336" y2="235" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+        <line x1="248" y1="228" x2="322" y2="228" stroke="rgba(255,255,255,0.14)" stroke-width="1.5"/>
+        <line x1="262" y1="221" x2="308" y2="221" stroke="rgba(255,255,255,0.09)" stroke-width="1.5"/>
 
         <!-- === SECOND CLUSTER === -->
-        <rect x="262" y="175" width="82" height="85" fill="rgba(255,255,255,0.65)" rx="2"/>
-        <rect x="298" y="150" width="76" height="110" fill="rgba(255,255,255,0.80)" rx="2"/>
-        <!-- Dome arc -->
-        <path d="M 298 150 a 38 17 0 0 1 76 0 Z" fill="rgba(43,108,176,0.80)"/>
-        <!-- Arched window -->
-        <rect x="270" y="196" width="18" height="22" fill="rgba(255,220,120,0.32)" rx="3"/>
-        <ellipse cx="279" cy="196" rx="9" ry="5" fill="rgba(255,220,120,0.32)"/>
-        <rect x="315" y="174" width="18" height="22" fill="rgba(255,220,120,0.28)" rx="3"/>
-        <ellipse cx="324" cy="174" rx="9" ry="5" fill="rgba(255,220,120,0.28)"/>
+        <rect x="262" y="177" width="80" height="83" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.46)" stroke-width="1.5"/>
+        <rect x="298" y="152" width="74" height="108" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.56)" stroke-width="1.5"/>
+        <path d="M 298 152 a 37 16 0 0 1 74 0 Z" fill="rgba(43,108,176,0.78)" stroke="rgba(255,255,255,0.40)" stroke-width="1.5"/>
+        <rect x="270" y="198" width="16" height="20" fill="rgba(255,220,120,0.30)" rx="2"/>
+        <ellipse cx="278" cy="198" rx="8" ry="4.5" fill="rgba(255,220,120,0.30)"/>
+        <rect x="316" y="176" width="16" height="20" fill="rgba(255,220,120,0.26)" rx="2"/>
+        <ellipse cx="324" cy="176" rx="8" ry="4.5" fill="rgba(255,220,120,0.26)"/>
 
         <!-- === CENTRE FEATURE CHURCH === -->
-        <rect x="568" y="156" width="158" height="104" fill="rgba(255,255,255,0.76)" rx="2"/>
-        <rect x="606" y="116" width="90" height="144" fill="rgba(255,255,255,0.93)" rx="2"/>
-        <!-- Prominent dome arc -->
-        <path d="M 606 116 a 45 22 0 0 1 90 0 Z" fill="rgba(43,108,176,0.91)"/>
-        <!-- Greek cross on dome -->
-        <rect x="648" y="86" width="6" height="31" fill="rgba(255,255,255,0.90)"/>
-        <rect x="636" y="95" width="30" height="5" fill="rgba(255,255,255,0.90)"/>
+        <rect x="568" y="158" width="156" height="102" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.58)" stroke-width="1.5"/>
+        <rect x="606" y="118" width="88" height="142" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.70)" stroke-width="1.5"/>
+        <!-- Dominant blue dome -->
+        <path d="M 606 118 a 44 22 0 0 1 88 0 Z" fill="rgba(43,108,176,0.90)" stroke="rgba(255,255,255,0.52)" stroke-width="1.5"/>
+        <!-- Cross — round-capped strokes, not rectangles -->
+        <line x1="650" y1="86" x2="650" y2="118" stroke="rgba(255,255,255,0.92)" stroke-width="5" stroke-linecap="round"/>
+        <line x1="636" y1="98" x2="664" y2="98" stroke="rgba(255,255,255,0.92)" stroke-width="5" stroke-linecap="round"/>
         <!-- Arched windows -->
-        <rect x="620" y="148" width="20" height="26" fill="rgba(255,220,120,0.50)" rx="3"/>
-        <ellipse cx="630" cy="148" rx="10" ry="6" fill="rgba(255,220,120,0.50)"/>
-        <rect x="660" y="148" width="20" height="26" fill="rgba(255,220,120,0.44)" rx="3"/>
-        <ellipse cx="670" cy="148" rx="10" ry="6" fill="rgba(255,220,120,0.44)"/>
-        <rect x="577" y="175" width="18" height="22" fill="rgba(255,220,120,0.34)" rx="3"/>
-        <ellipse cx="586" cy="175" rx="9" ry="5" fill="rgba(255,220,120,0.34)"/>
+        <rect x="620" y="150" width="18" height="24" fill="rgba(255,220,120,0.52)" rx="2"/>
+        <ellipse cx="629" cy="150" rx="9" ry="5" fill="rgba(255,220,120,0.52)"/>
+        <rect x="660" y="150" width="18" height="24" fill="rgba(255,220,120,0.44)" rx="2"/>
+        <ellipse cx="669" cy="150" rx="9" ry="5" fill="rgba(255,220,120,0.44)"/>
+        <rect x="577" y="177" width="16" height="20" fill="rgba(255,220,120,0.34)" rx="2"/>
+        <ellipse cx="585" cy="177" rx="8" ry="4.5" fill="rgba(255,220,120,0.34)"/>
         <!-- Terrace line -->
-        <rect x="562" y="242" width="172" height="5" fill="rgba(255,255,255,0.36)" rx="1"/>
+        <line x1="560" y1="244" x2="736" y2="244" stroke="rgba(255,255,255,0.26)" stroke-width="1.5"/>
 
         <!-- === RIGHT CLUSTER === -->
-        <rect x="1094" y="163" width="174" height="97" fill="rgba(255,255,255,0.68)" rx="2"/>
-        <rect x="1146" y="123" width="110" height="137" fill="rgba(255,255,255,0.84)" rx="2"/>
-        <!-- Dome arc -->
-        <path d="M 1146 123 a 55 24 0 0 1 110 0 Z" fill="rgba(43,108,176,0.83)"/>
-        <!-- Arched windows -->
-        <rect x="1156" y="162" width="20" height="26" fill="rgba(255,220,120,0.44)" rx="3"/>
-        <ellipse cx="1166" cy="162" rx="10" ry="6" fill="rgba(255,220,120,0.44)"/>
-        <rect x="1196" y="162" width="20" height="26" fill="rgba(255,220,120,0.38)" rx="3"/>
-        <ellipse cx="1206" cy="162" rx="10" ry="6" fill="rgba(255,220,120,0.38)"/>
-        <rect x="1104" y="185" width="16" height="20" fill="rgba(255,220,120,0.28)" rx="2"/>
+        <rect x="1094" y="166" width="170" height="94" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.50)" stroke-width="1.5"/>
+        <rect x="1146" y="126" width="108" height="134" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.60)" stroke-width="1.5"/>
+        <path d="M 1146 126 a 54 23 0 0 1 108 0 Z" fill="rgba(43,108,176,0.82)" stroke="rgba(255,255,255,0.44)" stroke-width="1.5"/>
+        <rect x="1156" y="165" width="18" height="24" fill="rgba(255,220,120,0.44)" rx="2"/>
+        <ellipse cx="1165" cy="165" rx="9" ry="5" fill="rgba(255,220,120,0.44)"/>
+        <rect x="1196" y="165" width="18" height="24" fill="rgba(255,220,120,0.36)" rx="2"/>
+        <ellipse cx="1205" cy="165" rx="9" ry="5" fill="rgba(255,220,120,0.36)"/>
+        <rect x="1104" y="187" width="14" height="18" fill="rgba(255,220,120,0.26)" rx="2"/>
 
         <!-- Far right cluster -->
-        <rect x="1314" y="176" width="126" height="84" fill="rgba(255,255,255,0.55)" rx="2"/>
-        <rect x="1336" y="156" width="74" height="104" fill="rgba(255,255,255,0.68)" rx="2"/>
-        <path d="M 1336 156 a 37 16 0 0 1 74 0 Z" fill="rgba(43,108,176,0.67)"/>
-        <rect x="1346" y="190" width="16" height="20" fill="rgba(255,220,120,0.30)" rx="2"/>
+        <rect x="1316" y="178" width="124" height="82" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.40)" stroke-width="1.5"/>
+        <rect x="1338" y="158" width="72" height="102" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.48)" stroke-width="1.5"/>
+        <path d="M 1338 158 a 36 16 0 0 1 72 0 Z" fill="rgba(43,108,176,0.64)" stroke="rgba(255,255,255,0.32)" stroke-width="1.5"/>
+        <rect x="1348" y="192" width="14" height="18" fill="rgba(255,220,120,0.28)" rx="2"/>
 
         <!-- Sea shimmer -->
-        <rect x="0" y="248" width="1440" height="12" fill="rgba(255,255,255,0.06)"/>
+        <line x1="0" y1="253" x2="1440" y2="253" stroke="rgba(255,255,255,0.07)" stroke-width="5"/>
       </svg>
     </div>
 
     <div class="scroll-hint" aria-hidden="true">
-      <span>scroll</span>
-      <div class="scroll-arrow">&#8595;</div>
+      <span>swipe</span>
+      <div class="scroll-arrow">&#8594;</div>
     </div>
   </section>
 
@@ -373,10 +366,6 @@
       </div>
 
       <div class="ornament ornament--faint">&#9671;</div>
-    </div>
-
-    <!-- Credits lifted above night skyline -->
-    <div class="skyline-credits">
       <p class="closing-credit">Alisa &amp; Noran &middot; Munich &middot; Version I</p>
     </div>
 
@@ -384,79 +373,79 @@
     <div class="skyline skyline--night">
       <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 
-        <!-- === LEFT CLUSTER — night === -->
-        <rect x="0" y="170" width="162" height="90" fill="rgba(255,255,255,0.24)" rx="2"/>
-        <rect x="38" y="148" width="114" height="112" fill="rgba(255,255,255,0.34)" rx="2"/>
-        <!-- Dome arc night -->
-        <path d="M 38 148 a 57 26 0 0 1 114 0 Z" fill="rgba(43,108,176,0.50)"/>
-        <!-- Glowing arched windows -->
-        <rect x="62" y="175" width="20" height="26" fill="rgba(255,215,100,0.68)" rx="3"/>
-        <ellipse cx="72" cy="175" rx="10" ry="6" fill="rgba(255,215,100,0.68)"/>
-        <rect x="104" y="175" width="20" height="26" fill="rgba(255,215,100,0.52)" rx="3"/>
-        <ellipse cx="114" cy="175" rx="10" ry="6" fill="rgba(255,215,100,0.52)"/>
-        <rect x="62" y="212" width="20" height="20" fill="rgba(255,215,100,0.42)" rx="3"/>
-        <ellipse cx="72" cy="212" rx="10" ry="5" fill="rgba(255,215,100,0.42)"/>
-        <!-- Small side building night -->
-        <rect x="4" y="188" width="38" height="72" fill="rgba(255,255,255,0.22)" rx="2"/>
-        <rect x="10" y="205" width="14" height="18" fill="rgba(255,215,100,0.48)" rx="2"/>
-        <!-- Bell tower night -->
-        <rect x="170" y="110" width="34" height="130" fill="rgba(255,255,255,0.28)" rx="2"/>
-        <polygon points="163,110 210,110 186.5,94" fill="rgba(255,255,255,0.25)"/>
-        <rect x="172" y="148" width="30" height="22" fill="rgba(43,108,176,0.36)" rx="15 15 2 2"/>
-        <rect x="152" y="234" width="68" height="5" fill="rgba(255,255,255,0.20)" rx="1"/>
-
+        <!-- === LEFT CLUSTER — night line-art === -->
+        <rect x="0" y="172" width="160" height="88" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <rect x="38" y="150" width="112" height="110" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+        <path d="M 38 150 a 56 25 0 0 1 112 0 Z" fill="rgba(43,108,176,0.48)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+        <!-- Side building -->
+        <rect x="4" y="190" width="36" height="70" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+        <!-- Bell tower -->
+        <rect x="170" y="112" width="32" height="128" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+        <polygon points="164,112 208,112 186,96" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M 173 168 L 173 152 A 14 14 0 0 1 201 152 L 201 168 Z" fill="rgba(43,108,176,0.32)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+        <line x1="150" y1="234" x2="222" y2="234" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <!-- Glowing windows — the main thing visible at night -->
+        <rect x="62" y="178" width="18" height="24" fill="rgba(255,215,100,0.70)" rx="2"/>
+        <ellipse cx="71" cy="178" rx="9" ry="5" fill="rgba(255,215,100,0.70)"/>
+        <rect x="104" y="178" width="18" height="24" fill="rgba(255,215,100,0.55)" rx="2"/>
+        <ellipse cx="113" cy="178" rx="9" ry="5" fill="rgba(255,215,100,0.55)"/>
+        <rect x="62" y="213" width="18" height="18" fill="rgba(255,215,100,0.42)" rx="2"/>
+        <rect x="10" y="207" width="14" height="18" fill="rgba(255,215,100,0.50)" rx="2"/>
         <!-- Steps night -->
-        <rect x="220" y="238" width="122" height="6" fill="rgba(255,255,255,0.18)" rx="1"/>
-        <rect x="232" y="231" width="98" height="6" fill="rgba(255,255,255,0.13)" rx="1"/>
-        <rect x="245" y="224" width="72" height="7" fill="rgba(255,255,255,0.09)" rx="1"/>
+        <line x1="222" y1="242" x2="348" y2="242" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+        <line x1="234" y1="235" x2="336" y2="235" stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+        <line x1="248" y1="228" x2="322" y2="228" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
 
         <!-- === SECOND CLUSTER night === -->
-        <rect x="262" y="175" width="82" height="85" fill="rgba(255,255,255,0.22)" rx="2"/>
-        <rect x="298" y="150" width="76" height="110" fill="rgba(255,255,255,0.30)" rx="2"/>
-        <path d="M 298 150 a 38 17 0 0 1 76 0 Z" fill="rgba(43,108,176,0.46)"/>
-        <rect x="270" y="196" width="18" height="22" fill="rgba(255,215,100,0.58)" rx="3"/>
-        <ellipse cx="279" cy="196" rx="9" ry="5" fill="rgba(255,215,100,0.58)"/>
-        <rect x="315" y="174" width="18" height="22" fill="rgba(255,215,100,0.46)" rx="3"/>
-        <ellipse cx="324" cy="174" rx="9" ry="5" fill="rgba(255,215,100,0.46)"/>
+        <rect x="262" y="177" width="80" height="83" fill="none" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <rect x="298" y="152" width="74" height="108" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+        <path d="M 298 152 a 37 16 0 0 1 74 0 Z" fill="rgba(43,108,176,0.44)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+        <rect x="270" y="198" width="16" height="20" fill="rgba(255,215,100,0.60)" rx="2"/>
+        <ellipse cx="278" cy="198" rx="8" ry="4.5" fill="rgba(255,215,100,0.60)"/>
+        <rect x="316" y="176" width="16" height="20" fill="rgba(255,215,100,0.48)" rx="2"/>
+        <ellipse cx="324" cy="176" rx="8" ry="4.5" fill="rgba(255,215,100,0.48)"/>
 
         <!-- === CENTRE FEATURE CHURCH night === -->
-        <rect x="568" y="156" width="158" height="104" fill="rgba(255,255,255,0.28)" rx="2"/>
-        <rect x="606" y="116" width="90" height="144" fill="rgba(255,255,255,0.36)" rx="2"/>
-        <path d="M 606 116 a 45 22 0 0 1 90 0 Z" fill="rgba(43,108,176,0.52)"/>
-        <rect x="648" y="86" width="5" height="29" fill="rgba(255,255,255,0.52)"/>
-        <rect x="636" y="95" width="28" height="4" fill="rgba(255,255,255,0.52)"/>
-        <!-- Glowing windows -->
-        <rect x="620" y="148" width="20" height="26" fill="rgba(255,215,100,0.68)" rx="3"/>
-        <ellipse cx="630" cy="148" rx="10" ry="6" fill="rgba(255,215,100,0.68)"/>
-        <rect x="660" y="148" width="20" height="26" fill="rgba(255,215,100,0.56)" rx="3"/>
-        <ellipse cx="670" cy="148" rx="10" ry="6" fill="rgba(255,215,100,0.56)"/>
-        <rect x="577" y="175" width="18" height="22" fill="rgba(255,215,100,0.46)" rx="3"/>
-        <ellipse cx="586" cy="175" rx="9" ry="5" fill="rgba(255,215,100,0.46)"/>
-        <rect x="620" y="180" width="18" height="20" fill="rgba(255,215,100,0.38)" rx="3"/>
-        <rect x="562" y="242" width="172" height="5" fill="rgba(255,255,255,0.16)" rx="1"/>
+        <rect x="568" y="158" width="156" height="102" fill="none" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+        <rect x="606" y="118" width="88" height="142" fill="none" stroke="rgba(255,255,255,0.38)" stroke-width="1.5"/>
+        <path d="M 606 118 a 44 22 0 0 1 88 0 Z" fill="rgba(43,108,176,0.50)" stroke="rgba(255,255,255,0.30)" stroke-width="1.5"/>
+        <!-- Cross barely visible -->
+        <line x1="650" y1="86" x2="650" y2="118" stroke="rgba(255,255,255,0.52)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="636" y1="98" x2="664" y2="98" stroke="rgba(255,255,255,0.52)" stroke-width="4" stroke-linecap="round"/>
+        <!-- Bright glowing windows -->
+        <rect x="620" y="150" width="18" height="24" fill="rgba(255,215,100,0.72)" rx="2"/>
+        <ellipse cx="629" cy="150" rx="9" ry="5" fill="rgba(255,215,100,0.72)"/>
+        <rect x="660" y="150" width="18" height="24" fill="rgba(255,215,100,0.60)" rx="2"/>
+        <ellipse cx="669" cy="150" rx="9" ry="5" fill="rgba(255,215,100,0.60)"/>
+        <rect x="577" y="177" width="16" height="20" fill="rgba(255,215,100,0.48)" rx="2"/>
+        <ellipse cx="585" cy="177" rx="8" ry="4.5" fill="rgba(255,215,100,0.48)"/>
+        <rect x="620" y="182" width="18" height="18" fill="rgba(255,215,100,0.38)" rx="2"/>
+        <line x1="560" y1="244" x2="736" y2="244" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
 
         <!-- === RIGHT CLUSTER night === -->
-        <rect x="1094" y="163" width="174" height="97" fill="rgba(255,255,255,0.24)" rx="2"/>
-        <rect x="1146" y="123" width="110" height="137" fill="rgba(255,255,255,0.32)" rx="2"/>
-        <path d="M 1146 123 a 55 24 0 0 1 110 0 Z" fill="rgba(43,108,176,0.48)"/>
-        <rect x="1156" y="162" width="20" height="26" fill="rgba(255,215,100,0.64)" rx="3"/>
-        <ellipse cx="1166" cy="162" rx="10" ry="6" fill="rgba(255,215,100,0.64)"/>
-        <rect x="1196" y="162" width="20" height="26" fill="rgba(255,215,100,0.52)" rx="3"/>
-        <ellipse cx="1206" cy="162" rx="10" ry="6" fill="rgba(255,215,100,0.52)"/>
-        <rect x="1104" y="185" width="16" height="20" fill="rgba(255,215,100,0.40)" rx="2"/>
-        <rect x="1158" y="192" width="16" height="20" fill="rgba(255,215,100,0.36)" rx="2"/>
+        <rect x="1094" y="166" width="170" height="94" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.5"/>
+        <rect x="1146" y="126" width="108" height="134" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.5"/>
+        <path d="M 1146 126 a 54 23 0 0 1 108 0 Z" fill="rgba(43,108,176,0.46)" stroke="rgba(255,255,255,0.24)" stroke-width="1.5"/>
+        <rect x="1156" y="165" width="18" height="24" fill="rgba(255,215,100,0.66)" rx="2"/>
+        <ellipse cx="1165" cy="165" rx="9" ry="5" fill="rgba(255,215,100,0.66)"/>
+        <rect x="1196" y="165" width="18" height="24" fill="rgba(255,215,100,0.54)" rx="2"/>
+        <ellipse cx="1205" cy="165" rx="9" ry="5" fill="rgba(255,215,100,0.54)"/>
+        <rect x="1104" y="187" width="14" height="18" fill="rgba(255,215,100,0.42)" rx="2"/>
+        <rect x="1158" y="194" width="14" height="18" fill="rgba(255,215,100,0.36)" rx="2"/>
 
         <!-- Far right cluster night -->
-        <rect x="1314" y="176" width="126" height="84" fill="rgba(255,255,255,0.20)" rx="2"/>
-        <rect x="1336" y="156" width="74" height="104" fill="rgba(255,255,255,0.28)" rx="2"/>
-        <path d="M 1336 156 a 37 16 0 0 1 74 0 Z" fill="rgba(43,108,176,0.42)"/>
-        <rect x="1346" y="190" width="16" height="20" fill="rgba(255,215,100,0.56)" rx="2"/>
+        <rect x="1316" y="178" width="124" height="82" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
+        <rect x="1338" y="158" width="72" height="102" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.5"/>
+        <path d="M 1338 158 a 36 16 0 0 1 72 0 Z" fill="rgba(43,108,176,0.40)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+        <rect x="1348" y="192" width="14" height="18" fill="rgba(255,215,100,0.58)" rx="2"/>
 
         <!-- Sea reflection -->
-        <rect x="0" y="248" width="1440" height="12" fill="rgba(255,255,255,0.05)"/>
+        <line x1="0" y1="253" x2="1440" y2="253" stroke="rgba(255,255,255,0.05)" stroke-width="5"/>
       </svg>
     </div>
   </section>
+
+  </div><!-- /menu-scroll -->
 
   <script src="script.js"></script>
 </body>

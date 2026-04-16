@@ -47,43 +47,41 @@ createStars('starsLayer1', 80);
 createStars('starsLayer2', 110);
 
 /* ============================================================
-   SIDE NAVIGATION
+   HORIZONTAL PAGE NAVIGATION
    ============================================================ */
-const navDots = $$('.sidenav__dot');
+const navDots  = $$('.sidenav__dot');
 const sections = $$('.page');
+const scroller = document.getElementById('menuScroll');
 
 function setActiveDot(id) {
   navDots.forEach(dot => {
     dot.classList.toggle('active', dot.dataset.target === id);
   });
-  // Swap dot style based on light vs dark page
-  if (LIGHT_PAGES.has(id)) {
-    document.body.classList.add('on-light-page');
-  } else {
-    document.body.classList.remove('on-light-page');
-  }
+  document.body.classList.toggle('on-light-page', LIGHT_PAGES.has(id));
 }
 
-// Intersection observer — mark active when ≥ 40% visible
+// Track which page is most visible inside the horizontal scroller
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      setActiveDot(entry.target.id);
-    }
+    if (entry.isIntersecting) setActiveDot(entry.target.id);
   });
-}, { threshold: 0.4 });
+}, {
+  root: scroller,
+  threshold: 0.5,
+});
 
 sections.forEach(sec => sectionObserver.observe(sec));
 
-// Dot click → smooth scroll
+// Dot click → scroll horizontally to the target page
 navDots.forEach(dot => {
   dot.addEventListener('click', () => {
     const target = document.getElementById(dot.dataset.target);
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    if (target && scroller) {
+      scroller.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    }
   });
 });
 
-// Init: mark first
 setActiveDot('page-1');
 
 /* ============================================================

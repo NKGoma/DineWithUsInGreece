@@ -44,22 +44,41 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  height: 100%;
 }
 
 body {
   font-family: var(--f-body);
   background: var(--blue-deep);
   color: var(--ink);
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
   line-height: 1.7;
 }
+
+/* ---- Horizontal scroll container ---- */
+.menu-scroll {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
+}
+.menu-scroll::-webkit-scrollbar { display: none; }
 
 /* ---- Pages ---- */
 .page {
   position: relative;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  scroll-snap-align: start;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -100,16 +119,16 @@ body {
 
 .skyline svg { width: 100%; height: auto; display: block; }
 
-/* ---- Side navigation dots ---- */
-.sidenav {
+/* ---- Bottom page navigation dots ---- */
+.pagenav {
   position: fixed;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 200;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  gap: 10px;
   align-items: center;
 }
 
@@ -152,7 +171,7 @@ body.on-light-page .sidenav__dot.active {
 /* ---- Music widget ---- */
 .music-widget {
   position: fixed;
-  bottom: 28px;
+  bottom: 52px;
   left: 28px;
   z-index: 200;
   display: flex;
@@ -269,9 +288,15 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   z-index: 2;
   width: 100%;
   max-width: var(--content-max);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: var(--section-pad-v) var(--section-pad-h);
-  padding-bottom: calc(var(--section-pad-v) + 40px);
+  padding-bottom: calc(var(--section-pad-v) + 48px);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+.page__inner::-webkit-scrollbar { display: none; }
 
 .page__inner--center { text-align: center; margin: 0 auto; }
 
@@ -344,14 +369,16 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   margin-top: 8px;
 }
 
-/* ---- Scroll hint ---- */
+/* ---- Swipe hint ---- */
 .scroll-hint {
   position: absolute;
-  bottom: 36px;
+  bottom: 52px;
   right: 56px;
   z-index: 3;
-  color: rgba(255, 255, 255, 0.3);
-  text-align: center;
+  color: rgba(255, 255, 255, 0.32);
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--f-body);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
@@ -360,14 +387,13 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 }
 
 .scroll-arrow {
-  margin-top: 6px;
   font-size: 1rem;
-  animation: bounce-down 2.2s ease-in-out infinite;
+  animation: bounce-right 2.2s ease-in-out infinite;
 }
 
-@keyframes bounce-down {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(7px); }
+@keyframes bounce-right {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(6px); }
 }
 
 /* ---- Section header ---- */
@@ -746,19 +772,14 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 /* ---- Closing page extras ---- */
 .page--closing .page__inner { padding-bottom: var(--section-pad-v); }
 
-/* ---- Credits above skyline ---- */
-.skyline-credits {
-  position: absolute;
-  bottom: 285px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 4;
-  pointer-events: none;
+/* ---- Utility: skyline clearance ---- */
+.page--dark .page__inner,
+.page--closing .page__inner {
+  padding-bottom: calc(var(--section-pad-v) + 270px);
 }
 
-@media (max-width: 640px) {
-  .skyline-credits { bottom: 120px; }
+.page--game .page__inner {
+  padding-bottom: calc(var(--section-pad-v) + 80px);
 }
 
 /* ---- Twinkling star keyframe ---- */
@@ -769,24 +790,20 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
 
 /* ---- Responsive ---- */
 @media (max-width: 640px) {
-  .page__inner { padding: 56px 22px 80px; }
-  .sidenav     { right: 10px; gap: 10px; }
-  .music-widget { bottom: 20px; left: 16px; }
+  .page__inner  { padding: 48px 20px 80px; }
+  .pagenav      { gap: 8px; bottom: 14px; }
+  .music-widget { bottom: 48px; left: 16px; }
   .music-widget__btn { width: 44px; height: 44px; }
-  .scroll-hint  { right: 36px; bottom: 28px; }
+  .scroll-hint  { display: none; }
   .game-grid    { grid-template-columns: 1fr; }
   .drink-components { gap: 4px; }
+  .page--dark .page__inner,
+  .page--closing .page__inner { padding-bottom: 110px; }
+  .page--game .page__inner    { padding-bottom: 60px; }
 }
 
 @media (max-height: 680px) {
-  .page__inner { padding-top: 40px; padding-bottom: 60px; }
-  .poem        { margin: 20px auto; }
-  .poem p      { margin-bottom: 14px; }
-}
-
-/* ---- Utility: hide skyline overlap area ---- */
-.page--dark  .page__inner,
-.page--game  .page__inner,
-.page--closing .page__inner {
-  padding-bottom: calc(var(--section-pad-v) + 80px);
+  .page__inner { padding-top: 36px; padding-bottom: 60px; }
+  .poem        { margin: 16px auto; }
+  .poem p      { margin-bottom: 12px; }
 }
