@@ -109,7 +109,7 @@ window.onYouTubeIframeAPIReady = function () {
   ytPlayer = new YT.Player('yt-player', {
     videoId: VIDEO_ID,
     playerVars: {
-      autoplay:        0,
+      autoplay:        1,
       loop:            1,
       playlist:        VIDEO_ID,
       controls:        0,
@@ -119,10 +119,7 @@ window.onYouTubeIframeAPIReady = function () {
     events: {
       onReady(e) {
         e.target.setVolume(62);
-        // If user already clicked, start now
-        if (playRequested) {
-          e.target.playVideo();
-        }
+        e.target.playVideo();
       },
       onStateChange(e) {
         if (e.data === YT.PlayerState.PLAYING) {
@@ -137,6 +134,13 @@ window.onYouTubeIframeAPIReady = function () {
     },
   });
 };
+
+// Mobile browsers block audio autoplay until a user gesture — play on first touch
+document.addEventListener('touchstart', function onFirstTouch() {
+  if (ytPlayer && !isPlaying) {
+    ytPlayer.playVideo();
+  }
+}, { once: true });
 
 function setMusicState(playing) {
   isPlaying = playing;

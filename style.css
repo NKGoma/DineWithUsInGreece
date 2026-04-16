@@ -67,6 +67,7 @@ body {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE/Edge */
 }
@@ -79,6 +80,7 @@ body {
   height: 100vh;
   flex-shrink: 0;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -173,10 +175,11 @@ body.on-light-page .sidenav__dot.active {
 /* ---- Music widget ---- */
 .music-widget {
   position: fixed;
-  bottom: 52px;
-  left: 28px;
+  top: 18px;
+  right: 20px;
   z-index: 200;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 12px;
 }
@@ -293,6 +296,8 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   padding: var(--section-pad-v) var(--section-pad-h);
   padding-bottom: calc(var(--section-pad-v) + 48px);
   scrollbar-width: none;
@@ -796,10 +801,10 @@ body.on-light-page .music-widget__status { color: rgba(61, 80, 104, 0.62); }
   .page__inner  { padding: 40px 20px 104px; }
   .pagenav      { gap: 8px; bottom: 14px; }
 
-  /* Music widget: icon only, no text label */
-  .music-widget { bottom: 56px; left: 16px; }
+  /* Music widget: top-right, icon only */
+  .music-widget { top: 12px; right: 14px; bottom: auto; left: auto; }
   .music-widget__info { display: none; }
-  .music-widget__btn  { width: 44px; height: 44px; }
+  .music-widget__btn  { width: 42px; height: 42px; }
 
   /* Swipe arrow: show on page-1, no text label */
   .scroll-hint        { display: flex; bottom: 24px; right: 16px; gap: 0; }
